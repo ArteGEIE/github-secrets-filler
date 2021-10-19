@@ -2,12 +2,12 @@
 Wrapper Class for the Github Secrets Filler
 """
 
-import urllib3
-import os
 import json
+import os
 import sys
-
 from base64 import b64encode
+
+import urllib3
 from nacl import encoding, public
 
 
