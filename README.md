@@ -35,7 +35,7 @@ optional arguments:
                         Github API Token. Can be given through GITHUB_TOKEN environment variable.
 ```
 
-## Docker Usage
+## 🐳 Docker Usage (recommended)
 
 ```bash
 export GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN>
