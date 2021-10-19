@@ -30,6 +30,7 @@ class Filler:
 
     def load_github_environment_secret(self):
         '''
+        Init the GithubEnvironmentSecret that wraps custom API calls to Github
         '''
 
         self.gh_env_secret = GithubEnvironmentSecret(
