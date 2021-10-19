@@ -3,7 +3,8 @@ name: "Build & Publish"
 on:
   push:
     branches:
-      - 'main'
+      - main
+  workflow_dispatch: ~
 
 jobs:
   build:
