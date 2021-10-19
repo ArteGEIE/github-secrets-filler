@@ -40,7 +40,10 @@ if __name__ == "__main__":
     parser.add_argument(
         '-k', '--token',
         dest='github_token',
-        help='Github API Token. Can be given through GITHUB_TOKEN environment variable.',
+        help=(
+            'Github API Token. Can be given through GITHUB_TOKEN '
+            'environment variable.'
+        ),
         required=False
     )
 

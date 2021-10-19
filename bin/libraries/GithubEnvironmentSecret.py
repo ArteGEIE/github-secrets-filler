@@ -4,11 +4,12 @@ Wrapper Class for the Github Secrets Filler
 
 import urllib3
 import os
-import json 
+import json
 import sys
 
 from base64 import b64encode
 from nacl import encoding, public
+
 
 class GithubEnvironmentSecret:
 
@@ -31,10 +32,10 @@ class GithubEnvironmentSecret:
                 f"Could not retrieve Environment {environment}"
             )
             sys.exit(1)
-        
+
         else:
             self.__env_secret_key = self.__retrieve_secret_key()
-    
+
     def __call_github(self, endpoint: str, verb: str, body=None):
         '''
         Wrapper for API Calls to Github APIv3
@@ -48,7 +49,7 @@ class GithubEnvironmentSecret:
         headers = {
             'Accept': "application/vnd.github.v3+json",
             'Authorization': f"Bearer {os.getenv('GITHUB_TOKEN', 'NONE')}",
-            'Content-Type': f"application/json"
+            'Content-Type': "application/json"
         }
 
         if body:
@@ -70,7 +71,7 @@ class GithubEnvironmentSecret:
 
         if resp.status > 300:
             raise Exception("Exception", str(response))
-        
+
         return response
 
     def __retrieve_secret_key(self):
@@ -82,10 +83,11 @@ class GithubEnvironmentSecret:
         try:
             result = self.__call_github(
                 verb='get',
-                endpoint=
+                endpoint=(
                     f"/repositories/{self.__repository_id}"
                     f"/environments/{self.__environment}"
                     f"/secrets/public-key"
+                )
             )
 
             return result
