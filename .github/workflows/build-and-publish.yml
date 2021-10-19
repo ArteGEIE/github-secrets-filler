@@ -27,9 +27,9 @@ jobs:
     # https://github.com/docker/build-push-action/issues/37
     - name: "⬇️ Lowercasing Target"
       run: |
-        echo GHCR_PATH=$(echo ${GHCR_PATH} | tr '[:upper:]' '[:lower:]') >> ${GITHUB_ENV}
+        echo ::set-env name=GHCR_PATH::$(echo ${REPOSITORY} | tr '[:upper:]' '[:lower:]')
       env:
-        GHCR_PATH: ${{ github.repository }}
+        REPOSITORY: ${{ github.repository }}
 
     - name: "🧰 Build Docker Image"
       uses: docker/build-push-action@v2
