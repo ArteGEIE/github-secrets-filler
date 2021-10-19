@@ -26,7 +26,9 @@ jobs:
 
     - name: "Lowercasing Target"
       run: |
-        echo "GHCR_PATH=${{ github.repository },,}" >> ${GITHUB_ENV}
+        echo "GHCR_PATH=${GHCR_PATH,,}" >> ${GITHUB_ENV}
+      env:
+        GHCR_PATH: ${{ github.repository }}
 
     - name: "🧰 Build Docker Image"
       uses: docker/build-push-action@v2
