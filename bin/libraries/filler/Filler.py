@@ -10,12 +10,13 @@ import github
 
 from ..GithubEnvironmentSecret import GithubEnvironmentSecret
 
+
 class Filler:
 
-    dotenv_values=None
-    github_repository=None
-    environment=None
-    gh_env_secret=None
+    dotenv_values = None
+    github_repository = None
+    environment = None
+    gh_env_secret = None
 
     def __init__(self, args):
         '''
@@ -46,7 +47,7 @@ class Filler:
 
         if args.github_token:
             os.environ["GITHUB_TOKEN"] = args.github_token
-        
+
         if not os.getenv('GITHUB_TOKEN'):
             print("Could not retrieve GITHUB_TOKEN")
             sys.exit(1)
@@ -59,14 +60,14 @@ class Filler:
         if not os.path.isfile(dotenv_file):
             print(f"Could not open DOTENV file {dotenv_file}")
             sys.exit(1)
-        
+
         try:
             self.dotenv_values = dotenv.dotenv_values(dotenv_file)
-        
+
         except Exception as exception:
             print(f"Could not load DOTENV file : {str(exception)}")
             sys.exit(1)
-    
+
     def load_github_repository(self, repository_name):
         '''
         Try to fetch the Github Repository with the Token

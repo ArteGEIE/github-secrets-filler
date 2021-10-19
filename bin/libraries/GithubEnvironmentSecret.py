@@ -92,7 +92,7 @@ class GithubEnvironmentSecret:
 
             return result
 
-        except Exception as exception:
+        except Exception:
             return False
 
     def __encrypt_secret(self, public_key: str, value: str) -> str:
@@ -125,12 +125,13 @@ class GithubEnvironmentSecret:
         try:
             self.__call_github(
                 verb='get',
-                endpoint=
+                endpoint=(
                     f"/repositories/{self.__repository_id}"
                     f"/environments/{self.__environment}"
                     f"/secrets/{key}"
+                )
             )
-        
+
             return True
 
         except Exception:
@@ -149,10 +150,11 @@ class GithubEnvironmentSecret:
         try:
             self.__call_github(
                 verb='put',
-                endpoint=
+                endpoint=(
                     f"/repositories/{self.__repository_id}"
                     f"/environments/{self.__environment}"
-                    f"/secrets/{key}",
+                    f"/secrets/{key}"
+                ),
                 body={
                     "encrypted_value": encrypted,
                     "key_id": str(self.__env_secret_key['key_id'])
@@ -161,5 +163,5 @@ class GithubEnvironmentSecret:
 
             return True
 
-        except Exception as exception:
+        except Exception:
             return False
