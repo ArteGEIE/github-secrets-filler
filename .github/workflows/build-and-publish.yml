@@ -24,9 +24,13 @@ jobs:
     - name: "📩 Checkout Project"
       uses: actions/checkout@v2
 
+    - name: "Lowercasing Target"
+      run: |
+        echo "GHCR_PATH=${{ github.repository },,}" >> ${GITHUB_ENV}
+
     - name: "🧰 Build Docker Image"
       uses: docker/build-push-action@v2
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ github.repository }}:latest
+        tags: ghcr.io/${GHCR_PATH}:latest
