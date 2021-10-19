@@ -26,7 +26,8 @@ jobs:
 
     - name: "Lowercasing Target"
       run: |
-        echo "GHCR_PATH=${GHCR_PATH,,}" >> ${GITHUB_ENV}
+        echo GHCR_PATH=$(echo ${GHCR_PATH} | tr '[:upper:]' '[:lower:]') >> ${GITHUB_ENV}
+        echo ${GITHUB_ENV}
       env:
         GHCR_PATH: ${{ github.repository }}
 
