@@ -38,12 +38,12 @@ optional arguments:
 ## 🐳 Docker Usage (recommended)
 
 ```bash
-export GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN>
+export GITHUB_TOKEN="<YOUR_PERSONAL_ACCESS_TOKEN>"
 
 docker run --rm -v "$PWD:/dotenv" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -it ghcr.io/devopsactions/github-secrets-filler:latest \
-    -f /dotenv/dotenv.example \
-    -p "DevOpsActions/slave-repo-1" \
-    -e testenv1
+    -f "/dotenv/<FILENAME>" \
+    -p "<DESTINATION REPOSITORY>" \
+    -e "<DESTINATION ENVIRONMENT>"
 ```
 
 Explanations :
