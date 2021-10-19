@@ -17,7 +17,7 @@ jobs:
     - name: "🔐 Login to GitHub Container Registry"
       uses: docker/login-action@v1
       with:
-        registry: ghcr.io
+        registry: ${{ secrets.REGISTRY_HOSTNAME }}
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -37,5 +37,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ env.GHCR_PATH }}:latest
-
+        tags: ${{ secrets.REGISTRY_HOSTNAME }}/${{ env.GHCR_PATH }}:latest
