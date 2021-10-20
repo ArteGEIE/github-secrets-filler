@@ -18,7 +18,7 @@ pip install -r requirements.txt
 ```
 
 ```raw
-python main.py -h
+$ python main.py -h
 usage: main.py [-h] -f DOTENV_FILE -p REPOSITORY_NAME -e ENVIRONMENT [-k GITHUB_TOKEN]
 
 Import dotenv files to Github Projects Environments as Secret Variables
@@ -40,7 +40,10 @@ optional arguments:
 ```bash
 export GITHUB_TOKEN="<YOUR_PERSONAL_ACCESS_TOKEN>"
 
-docker run --rm -v "$PWD:/dotenv" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -it ghcr.io/artegeie/github-secrets-filler:latest \
+docker run --rm --name github-secrets-filler \
+    -v "$PWD:/dotenv" \
+    -e GITHUB_TOKEN="${GITHUB_TOKEN}" \
+    -it ghcr.io/artegeie/github-secrets-filler:latest \
     -f "/dotenv/<FILENAME>" \
     -p "<DESTINATION REPOSITORY>" \
     -e "<DESTINATION ENVIRONMENT>"
