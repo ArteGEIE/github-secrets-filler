@@ -50,7 +50,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     print(
-        f"Pushing {args.dotenv_file} to {args.repository_name} in Environment {args.environment} ..."
+        f"Pushing {args.dotenv_file} to {args.repository_name} "
+        f"in Environment {args.environment} ..."
     )
 
     f = Filler(args)
