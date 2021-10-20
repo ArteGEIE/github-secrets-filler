@@ -30,7 +30,7 @@ optional arguments:
   -p REPOSITORY_NAME, --project REPOSITORY_NAME
                         path to the github repository. Ex: ArteGEIE/my-project
   -e ENVIRONMENT, --env ENVIRONMENT
-                        environment name
+                        targeted environment's name
   -k GITHUB_TOKEN, --token GITHUB_TOKEN
                         Github API Token. Can be given through GITHUB_TOKEN environment variable.
 ```
