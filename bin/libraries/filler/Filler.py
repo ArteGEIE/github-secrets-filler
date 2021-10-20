@@ -35,7 +35,7 @@ class Filler:
         '''
 
         self.gh_env_secret = GithubEnvironmentSecret(
-            repository_id=self.github_repository.id,
+            repository=self.github_repository,
             environment=self.environment
         )
 

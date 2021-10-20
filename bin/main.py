@@ -33,7 +33,7 @@ if __name__ == "__main__":
     parser.add_argument(
         '-e', '--env',
         dest='environment',
-        help='environment name',
+        help='targeted environment\'s name',
         required=True
     )
 
@@ -48,6 +48,10 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
+
+    print(
+        f"Pushing {args.dotenv_file} to {args.repository_name} in Environment {args.environment} ..."
+    )
 
     f = Filler(args)
     f.create_secrets()

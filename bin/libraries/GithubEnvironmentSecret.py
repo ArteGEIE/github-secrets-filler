@@ -18,19 +18,18 @@ class GithubEnvironmentSecret:
     __github_api_endpoint = "https://api.github.com"
     __env_secret_key = None
 
-    def __init__(self, repository_id: int, environment: str):
+    def __init__(self, repository: object, environment: str):
         '''
         GithubEnvironmentSecret Constructor
         Takes the Repository ID and Environment Name
         '''
 
-        self.__repository_id = repository_id
+        self.__repository = repository
+        self.__repository_id = self.__repository.id
         self.__environment = environment
 
-        if not self.__environment_exists():
-            print(
-                f"Could not retrieve Environment {environment}"
-            )
+        if not self.__environment_exists() and \
+           not self.__create_environment():
             sys.exit(1)
 
         else:
@@ -108,6 +107,36 @@ class GithubEnvironmentSecret:
         encrypted = sealed_box.encrypt(value.encode("utf-8"))
 
         return b64encode(encrypted).decode("utf-8")
+
+    def __create_environment(self, wait_timer: int = 0, reviewers: dict = []) -> bool:
+        '''
+        Create the Environment for the Project
+        '''
+
+        try:
+            print(
+                f" » Creating Environment {self.__environment} ..."
+            )
+
+            self.__call_github(
+                verb='put',
+                endpoint=(
+                    f"/repos/{self.__repository.full_name}"
+                    f"/environments/{self.__environment}"
+                ),
+                body={
+                    "wait_timer": wait_timer,
+                    "reviewers": reviewers
+                }
+            )
+
+            return True
+        
+        except Exception:
+            print(
+                f"Could not create Environment {self.__environment}"
+            )
+            return False
 
     def __environment_exists(self) -> bool:
         '''
