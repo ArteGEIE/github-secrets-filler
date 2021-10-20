@@ -109,7 +109,7 @@ class GithubEnvironmentSecret:
         return b64encode(encrypted).decode("utf-8")
 
     def __create_environment(self, wait_timer: int = 0,
-        reviewers: dict = []) -> bool:
+            reviewers: dict = []) -> bool:
         '''
         Create the Environment for the Project
         '''
