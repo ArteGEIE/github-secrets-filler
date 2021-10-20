@@ -1,7 +1,8 @@
 FROM python:3
 
-ENV WORKDIR=/app
+LABEL org.opencontainers.image.source="https://github.com/ArteGEIE/github-secrets-filler"
 
+ENV WORKDIR=/app
 WORKDIR ${WORKDIR}
 
 COPY bin/requirements.txt ${WORKDIR}
