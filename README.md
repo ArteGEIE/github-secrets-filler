@@ -40,7 +40,7 @@ optional arguments:
 ```bash
 export GITHUB_TOKEN="<YOUR_PERSONAL_ACCESS_TOKEN>"
 
-docker run --rm -v "$PWD:/dotenv" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -it ghcr.io/devopsactions/github-secrets-filler:latest \
+docker run --rm -v "$PWD:/dotenv" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -it ghcr.io/artegeie/github-secrets-filler:latest \
     -f "/dotenv/<FILENAME>" \
     -p "<DESTINATION REPOSITORY>" \
     -e "<DESTINATION ENVIRONMENT>"
