@@ -102,10 +102,10 @@ class Filler:
             dotenv_val = self.dotenv_values[dotenv_key]
 
             if self.gh_env_secret.secret_exists(dotenv_key):
-                print(f" » Updating {dotenv_key} ...")
+                print(f" » Updating Secret {dotenv_key} ...")
 
             else:
-                print(f" » Creating {dotenv_key} ...")
+                print(f" » Creating Secret {dotenv_key} ...")
 
             self.gh_env_secret.add_secret(
                 key=dotenv_key,
