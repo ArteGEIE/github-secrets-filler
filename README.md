@@ -4,6 +4,8 @@ Convert your project dotenv files to Github Environment Secret Variables.
 
 [![Code Quality Check](https://github.com/ArteGEIE/github-secrets-filler/actions/workflows/code-quality.yml/badge.svg)](https://github.com/ArteGEIE/github-secrets-filler/actions/workflows/code-quality.yml)
 
+[![Build](https://github.com/ArteGEIE/github-secrets-filler/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/ArteGEIE/github-secrets-filler/actions/workflows/build-and-publish.yml)
+
 ---
 
 ## Direct Usage
